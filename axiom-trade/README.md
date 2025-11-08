@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Axiom Trade Platform
+
+A next-generation trading platform built with Next.js, featuring a modern dark theme UI and real-time trading capabilities.
+
+## Features
+
+### Core Trading Features
+- **Spot Trading Interface**: Clean and intuitive spot trading interface
+- **Perpetual Trading**: Support for perpetual futures trading (in development)
+- **Token Table**: Real-time token price and trading information with dynamic loading states
+- **Balance Overview**: Real-time balance tracking and PNL visualization
+- **Chart Integration**: Interactive price charts using Recharts
+
+### UI Components
+
+#### Atomic Design Structure
+- **Atoms**
+  - `Button.tsx`: Reusable button component with multiple variants
+  - `Skeleton.tsx`: Loading state placeholder component
+
+- **Molecules**
+  - `Header.tsx`: Application header with navigation
+  - `TokenTable.tsx`: Comprehensive token information display
+
+- **Organisms**
+  - `NavBar.tsx`: Main navigation bar with authentication controls
+  - `TokenTable.tsx`: Complete trading interface with token information
+
+#### UI Library Components
+- **Radix UI Integration**
+  - Popover: Enhanced dropdowns and contextual interfaces
+  - Tooltip: Informative hover states
+  - Slot: Compound component composition
+
+### Technical Stack
+
+- **Framework**: Next.js 16.0.1
+- **State Management**: 
+  - Redux Toolkit
+  - React Query for API state
+- **Styling**: 
+  - TailwindCSS with custom configuration
+  - CSS Modules for component-specific styles
+- **UI Libraries**:
+  - Radix UI for accessible components
+  - Recharts for data visualization
+- **Development Tools**:
+  - TypeScript for type safety
+  - ESLint & Prettier for code quality
+  - Jest & Testing Library for unit testing
+  - Playwright for E2E testing
 
 ## Getting Started
 
-First, run the development server:
+1. **Installation**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Development**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000)
+
+3. **Testing**
+   ```bash
+   # Unit Tests
+   npm run test
+   
+   # E2E Tests
+   npm run test:e2e
+   ```
+
+4. **Build**
+   ```bash
+   npm run build
+   ```
+
+## Project Structure
+
+```
+axiom-trade/
+├── app/                  # Next.js 13+ app directory
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Homepage
+├── components/          # React components
+│   ├── atoms/          # Basic building blocks
+│   ├── molecules/      # Composite components
+│   ├── organisms/      # Complex UI sections
+│   └── ui/             # Shared UI components
+├── hooks/              # Custom React hooks
+├── lib/               # Utility functions
+├── public/            # Static assets
+├── store/             # Redux store configuration
+└── types/             # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Component Documentation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### TokenTable
+The main trading interface component that displays:
+- Token pairs and current prices
+- Real-time price updates
+- Trading volume information
+- Interactive actions for each token
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### NavBar
+Main navigation component featuring:
+- Brand logo and name
+- Authentication controls (Login/Sign up)
+- Responsive design for mobile views
 
-## Learn More
+### Charts
+Implemented using Recharts library:
+- Price history visualization
+- PNL tracking
+- Volume indicators
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is proprietary software. All rights reserved.
