@@ -22,13 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head />
-      <body className={`${inter.variable} min-h-screen bg-background font-sans antialiased`}>
+      <body className={`${inter.variable} min-h-screen bg-[#040507] font-sans antialiased`}>
         <Providers>
-          <Header />
-          <NavBar className="border-b" />
-          <main className="flex-1">{children}</main>
+          <NavBar />
+          <main className="flex-1 pt-16">{children}</main>
         </Providers>
       </body>
     </html>
