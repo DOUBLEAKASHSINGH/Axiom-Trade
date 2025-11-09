@@ -43,22 +43,26 @@ export default function Home() {
     {
       title: "Order Execution Engine",
       subtitle: "Trade with confidence.",
-      details: "Our advanced order execution engine ensures fast and reliable trades with minimal slippage."
+      details: "Our advanced order execution engine ensures fast and reliable trades with minimal slippage.",
+      image: "/next.svg"
     },
     {
       title: "Wallet and Twitter Tracker",
       subtitle: "Trade and track all in one place.",
-      details: "Monitor your wallet balances and track Twitter trends for informed trading decisions."
+      details: "Monitor your wallet balances and track Twitter trends for informed trading decisions.",
+      image: "/globe.svg"
     },
     {
       title: "Hyperliquid Perpetuals",
       subtitle: "Trade leveraged Perps.",
-      details: "Access perpetual futures with high leverage for amplified trading opportunities."
+      details: "Access perpetual futures with high leverage for amplified trading opportunities.",
+      image: "/window.svg"
     },
     {
       title: "Yield",
       subtitle: "Earn while you sleep.",
-      details: "Generate passive income through staking and yield farming strategies."
+      details: "Generate passive income through staking and yield farming strategies.",
+      image: "/vercel.svg"
     }
   ]
 
@@ -96,24 +100,33 @@ export default function Home() {
           From wallet tracking to real-time analytics, we've got you covered.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="bg-[#0a0c10] rounded-lg">
-              <button
-                onClick={() => toggleFeature(index)}
-                className="w-full text-left p-6 flex flex-col hover:bg-[#1a1d24] transition-colors rounded-lg"
-              >
-                <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                <p className="text-gray-400 mb-4">{feature.subtitle}</p>
-                <span className="text-2xl self-end">{openFeature === index ? '−' : '+'}</span>
-              </button>
-              {openFeature === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-400">{feature.details}</p>
-                </div>
-              )}
-            </div>
-          ))}
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-8 pb-4">
+            {features.map((feature, index) => (
+              <div key={index} className="min-w-[300px] bg-[#0a0c10] rounded-lg">
+                <button
+                  onClick={() => toggleFeature(index)}
+                  className="w-full text-left p-6 flex flex-col hover:bg-[#1a1d24] transition-colors rounded-lg"
+                >
+                  <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                  <p className="text-gray-400 mb-4">{feature.subtitle}</p>
+                  <span className="text-2xl self-end">{openFeature === index ? '−' : '+'}</span>
+                </button>
+                {openFeature === index && (
+                  <div className="px-6 pb-6">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      width={200}
+                      height={150}
+                      className="w-full h-32 object-cover rounded mb-4"
+                    />
+                    <p className="text-gray-400">{feature.details}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Order Execution Engine Details */}
