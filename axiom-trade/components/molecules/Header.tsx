@@ -1,7 +1,12 @@
 import React from 'react'
 import Button from '../atoms/Button'
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onLoginClick: () => void
+  onSignUpClick: () => void
+}
+
+export const Header: React.FC<HeaderProps> = ({ onLoginClick, onSignUpClick }) => {
   return (
     <header className="w-full border-b border-border bg-card px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-3">
@@ -9,8 +14,8 @@ export const Header: React.FC = () => {
         <span className="text-sm text-muted-foreground">Trade</span>
       </div>
       <div className="flex items-center gap-4">
-        <Button variant="ghost">Login</Button>
-        <Button>Sign up</Button>
+        <Button variant="ghost" onClick={onLoginClick}>Login</Button>
+        <Button onClick={onSignUpClick}>Sign up</Button>
       </div>
     </header>
   )

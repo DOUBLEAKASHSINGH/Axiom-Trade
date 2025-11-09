@@ -4,7 +4,13 @@ import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Button } from '../atoms/Button'
 
-export const NavBar: React.FC<{ className?: string }> = ({ className }) => {
+interface NavBarProps {
+  className?: string
+  onLoginClick: () => void
+  onSignUpClick: () => void
+}
+
+export const NavBar: React.FC<NavBarProps> = ({ className, onLoginClick, onSignUpClick }) => {
   return (
     <nav className={cn("fixed top-0 w-full px-6 py-4 flex items-center justify-between bg-[#040507]/95 backdrop-blur supports-[backdrop-filter]:bg-[#040507]/60 z-50 animate-fade-in", className)}>
       <div className="flex items-center gap-2">
@@ -15,12 +21,12 @@ export const NavBar: React.FC<{ className?: string }> = ({ className }) => {
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="ghost" className="text-gray-400 hover:text-white">
+        <button className="text-gray-400 hover:text-white px-4 py-2 rounded" onClick={onLoginClick}>
           Login
-        </Button>
-        <Button variant="default" className="bg-blue-600 hover:bg-blue-700">
+        </button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" onClick={onSignUpClick}>
           Sign up
-        </Button>
+        </button>
       </div>
     </nav>
   )
