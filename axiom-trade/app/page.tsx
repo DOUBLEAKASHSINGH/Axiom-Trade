@@ -1,7 +1,39 @@
+'use client'
+
 import Image from "next/image";
 import TokenTable from '@/components/organisms/TokenTable'
+import { useState } from 'react'
 
 export default function Home() {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index)
+  }
+
+  const faqs = [
+    {
+      question: "What is Axiom?",
+      answer: "Axiom is a trading platform designed to be the only application you need to trade onchain. We offer a suite of integrations that allow you to trade the hottest assets, all in one place."
+    },
+    {
+      question: "How secure is Axiom?",
+      answer: "Axiom prioritizes security with non-custodial wallets and MEV-resistant execution."
+    },
+    {
+      question: "Can I buy crypto on Axiom?",
+      answer: "Yes, Axiom supports various trading features including buying crypto."
+    },
+    {
+      question: "How does Axiom offer yield?",
+      answer: "Axiom provides yield opportunities through various trading and staking features."
+    },
+    {
+      question: "Is Axiom decentralized?",
+      answer: "Axiom is designed with decentralized principles in mind."
+    }
+  ]
+
   return (
     <div className="relative z-10 min-h-screen bg-[#040507] text-white">
       {/* Hero Section */}
@@ -164,29 +196,25 @@ export default function Home() {
 
       {/* FAQ Section */}
       <section className="container mx-auto px-4 py-20 animate-slide-up">
-        <h2 className="text-5xl font-bold text-center mb-8">FAQ</h2>
+        <h2 className="text-5xl font-bold text-left mb-8">FAQ</h2>
 
-        <div className="space-y-8">
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">What is Axiom?</h3>
-            <p className="text-gray-400">Axiom is a trading platform designed to be the only application you need to trade onchain. We offer a suite of integrations that allow you to trade the hottest assets, all in one place.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">How secure is Axiom?</h3>
-            <p className="text-gray-400">Axiom prioritizes security with non-custodial wallets and MEV-resistant execution.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Can I buy crypto on Axiom?</h3>
-            <p className="text-gray-400">Yes, Axiom supports various trading features including buying crypto.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">How does Axiom offer yield?</h3>
-            <p className="text-gray-400">Axiom provides yield opportunities through various trading and staking features.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Is Axiom decentralized?</h3>
-            <p className="text-gray-400">Axiom is designed with decentralized principles in mind.</p>
-          </div>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="bg-[#0a0c10] rounded-lg">
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full text-left p-6 flex justify-between items-center hover:bg-[#1a1d24] transition-colors"
+              >
+                <h3 className="text-xl font-semibold">{faq.question}</h3>
+                <span className="text-2xl">{openFAQ === index ? '−' : '+'}</span>
+              </button>
+              {openFAQ === index && (
+                <div className="px-6 pb-6">
+                  <p className="text-gray-400">{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
