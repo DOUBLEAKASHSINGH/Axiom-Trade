@@ -22,13 +22,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const handleLoginClick = () => {
+    // Handle login click
+  }
+
+  const handleSignUpClick = () => {
+    // Handle sign up click
+  }
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head />
       <body className={`${inter.variable} min-h-screen bg-[#040507] font-sans antialiased`}>
         <AnimatedBackground />
         <Providers>
-          <NavBar />
+          <NavBar onLoginClick={handleLoginClick} onSignUpClick={handleSignUpClick} />
           <main className="flex-1 pt-16">{children}</main>
         </Providers>
       </body>
