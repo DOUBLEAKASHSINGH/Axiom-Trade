@@ -132,8 +132,7 @@ export default function Home() {
         {/* Order Execution Engine Details */}
         <div className="mt-20">
           <div className="max-w-xl">
-            <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <span className="inline-block">⚡</span>
+            <h3 className="text-2xl font-semibold mb-4">
               Land in ≤ 1 Block
             </h3>
             <h4 className="text-xl mb-4">
@@ -148,8 +147,7 @@ export default function Home() {
         {/* Additional Features */}
         <div className="mt-20">
           <div className="max-w-xl">
-            <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <span className="inline-block">🚀</span>
+            <h3 className="text-2xl font-semibold mb-4">
               Migration Sniper
             </h3>
             <h4 className="text-xl mb-4">
@@ -163,8 +161,7 @@ export default function Home() {
 
         <div className="mt-20">
           <div className="max-w-xl">
-            <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-              <span className="inline-block">🤖</span>
+            <h3 className="text-2xl font-semibold mb-4">
               Auto-Strategies
             </h3>
             <p className="text-gray-400">
