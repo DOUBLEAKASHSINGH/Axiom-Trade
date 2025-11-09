@@ -7,6 +7,8 @@ type TableState = {
   filters: Record<string, string>
   columnVisibility: Record<string, boolean>
   realtimeEnabled: boolean
+  modalOpen: boolean
+  selectedToken: any | null
 }
 
 const initialState: TableState = {
@@ -14,6 +16,8 @@ const initialState: TableState = {
   filters: {},
   columnVisibility: { pair: true, price: true, change24: true, liquidity: true, status: true },
   realtimeEnabled: false,
+  modalOpen: false,
+  selectedToken: null,
 }
 
 const tableSlice = createSlice({
@@ -33,8 +37,16 @@ const tableSlice = createSlice({
     setRealtime(state, action: PayloadAction<boolean>) {
       state.realtimeEnabled = action.payload
     },
+    openModal(state, action: PayloadAction<any>) {
+      state.modalOpen = true
+      state.selectedToken = action.payload
+    },
+    closeModal(state) {
+      state.modalOpen = false
+      state.selectedToken = null
+    },
   },
 })
 
-export const { setSort, setFilter, toggleColumn, setRealtime } = tableSlice.actions
+export const { setSort, setFilter, toggleColumn, setRealtime, openModal, closeModal } = tableSlice.actions
 export default tableSlice.reducer

@@ -6,6 +6,10 @@ export type Perpetual = {
   change24: string
   liquidity: string
   status: 'New' | 'Final Stretch' | 'Migrated'
+  marketCap: string
+  volume24h: string
+  transactions: number
+  holders: number
 }
 
 async function fetchPerpetuals(): Promise<Perpetual[]> {
