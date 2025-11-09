@@ -181,31 +181,33 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-center mb-8">Rewards</h2>
         <p className="text-lg text-gray-400 text-center mb-16">Get paid to trade.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 rounded-lg bg-[#0a0c10] text-center">
-            <h3 className="text-xl font-semibold mb-4">Rewards</h3>
-            <p className="text-gray-400 mb-4">Earn SOL from trading.</p>
+        <div className="bg-blue-900 border-t-4 border-t-blue-600 p-8 rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="p-6 rounded-lg bg-blue-800 text-center">
+              <h3 className="text-xl font-semibold mb-4">Rewards</h3>
+              <p className="text-gray-400 mb-4">Earn SOL from trading.</p>
+            </div>
+            <div className="p-6 rounded-lg bg-blue-800 text-center">
+              <h3 className="text-xl font-semibold mb-4">Rewards notification</h3>
+              <p className="text-gray-400 mb-4">Progress through the Ranks</p>
+              <p className="text-gray-400">Earn higher reward rates.</p>
+            </div>
+            <div className="p-6 rounded-lg bg-blue-800 text-center">
+              <h3 className="text-xl font-semibold mb-4">Rank rewards illustration</h3>
+              <p className="text-gray-400 mb-4">Referrals</p>
+              <p className="text-gray-400">Earn points and SOL from your friends.</p>
+            </div>
           </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10] text-center">
-            <h3 className="text-xl font-semibold mb-4">Rewards notification</h3>
-            <p className="text-gray-400 mb-4">Progress through the Ranks</p>
-            <p className="text-gray-400">Earn higher reward rates.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10] text-center">
-            <h3 className="text-xl font-semibold mb-4">Rank rewards illustration</h3>
-            <p className="text-gray-400 mb-4">Referrals</p>
-            <p className="text-gray-400">Earn points and SOL from your friends.</p>
-          </div>
-        </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-6 rounded-lg bg-[#0a0c10] text-center">
-            <h3 className="text-xl font-semibold mb-4">Referral rewards</h3>
-            <p className="text-gray-400">Earn points and SOL from your friends.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10] text-center">
-            <h3 className="text-xl font-semibold mb-4">Axiom Points</h3>
-            <p className="text-gray-400">Earn points through trading, referrals, and quests.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-6 rounded-lg bg-blue-800 text-center">
+              <h3 className="text-xl font-semibold mb-4">Referral rewards</h3>
+              <p className="text-gray-400">Earn points and SOL from your friends.</p>
+            </div>
+            <div className="p-6 rounded-lg bg-blue-800 text-center">
+              <h3 className="text-xl font-semibold mb-4">Axiom Points</h3>
+              <p className="text-gray-400">Earn points through trading, referrals, and quests.</p>
+            </div>
           </div>
         </div>
       </section>
