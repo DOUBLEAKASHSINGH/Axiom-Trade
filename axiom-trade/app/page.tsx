@@ -181,7 +181,7 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-center mb-8">Rewards</h2>
         <p className="text-lg text-gray-400 text-center mb-16">Get paid to trade.</p>
 
-        <div className="bg-blue-900 border-t-4 border-t-blue-600 p-8 rounded-lg">
+        <div className="bg-[rgba(45,40,60,0.5)] backdrop-blur-[12px] border border-[rgba(255,255,255,0.1)] rounded-lg p-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="p-6 rounded-lg bg-blue-800 text-center">
               <h3 className="text-xl font-semibold mb-4">Rewards</h3>
