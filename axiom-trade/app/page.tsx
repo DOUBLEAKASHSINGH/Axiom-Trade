@@ -6,9 +6,14 @@ import { useState } from 'react'
 
 export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  const [openFeature, setOpenFeature] = useState<number | null>(null)
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index)
+  }
+
+  const toggleFeature = (index: number) => {
+    setOpenFeature(openFeature === index ? null : index)
   }
 
   const faqs = [
@@ -31,6 +36,29 @@ export default function Home() {
     {
       question: "Is Axiom decentralized?",
       answer: "Axiom is designed with decentralized principles in mind."
+    }
+  ]
+
+  const features = [
+    {
+      title: "Order Execution Engine",
+      subtitle: "Trade with confidence.",
+      details: "Our advanced order execution engine ensures fast and reliable trades with minimal slippage."
+    },
+    {
+      title: "Wallet and Twitter Tracker",
+      subtitle: "Trade and track all in one place.",
+      details: "Monitor your wallet balances and track Twitter trends for informed trading decisions."
+    },
+    {
+      title: "Hyperliquid Perpetuals",
+      subtitle: "Trade leveraged Perps.",
+      details: "Access perpetual futures with high leverage for amplified trading opportunities."
+    },
+    {
+      title: "Yield",
+      subtitle: "Earn while you sleep.",
+      details: "Generate passive income through staking and yield farming strategies."
     }
   ]
 
@@ -69,22 +97,23 @@ export default function Home() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Order Execution Engine</h3>
-            <p className="text-gray-400 mb-4">Trade with confidence.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Wallet and Twitter Tracker</h3>
-            <p className="text-gray-400 mb-4">Trade and track all in one place.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Hyperliquid Perpetuals</h3>
-            <p className="text-gray-400 mb-4">Trade leveraged Perps.</p>
-          </div>
-          <div className="p-6 rounded-lg bg-[#0a0c10]">
-            <h3 className="text-xl font-semibold mb-4">Yield</h3>
-            <p className="text-gray-400 mb-4">Earn while you sleep.</p>
-          </div>
+          {features.map((feature, index) => (
+            <div key={index} className="bg-[#0a0c10] rounded-lg">
+              <button
+                onClick={() => toggleFeature(index)}
+                className="w-full text-left p-6 flex flex-col hover:bg-[#1a1d24] transition-colors rounded-lg"
+              >
+                <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                <p className="text-gray-400 mb-4">{feature.subtitle}</p>
+                <span className="text-2xl self-end">{openFeature === index ? '−' : '+'}</span>
+              </button>
+              {openFeature === index && (
+                <div className="px-6 pb-6">
+                  <p className="text-gray-400">{feature.details}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Order Execution Engine Details */}
