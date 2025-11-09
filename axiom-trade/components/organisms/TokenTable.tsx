@@ -1,23 +1,40 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
 import Skeleton from '@/components/atoms/Skeleton'
 import { useTokens } from '@/hooks/useTokens'
+import { usePerpetuals } from '@/hooks/usePerpetuals'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { LineChart, Line } from 'recharts'
 
 export const TokenTable: React.FC = () => {
-  const { data, isLoading, isError, error } = useTokens()
+  const { data: spotData, isLoading: spotLoading, isError: spotError, error: spotErrorData } = useTokens()
+  const { data: perpData, isLoading: perpLoading, isError: perpError, error: perpErrorData } = usePerpetuals()
   const [revealed, setRevealed] = useState(0)
+  const [activeTab, setActiveTab] = useState<'spot' | 'perpetuals'>('spot')
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const data = activeTab === 'spot' ? spotData : perpData
+  const isLoading = activeTab === 'spot' ? spotLoading : perpLoading
+  const isError = activeTab === 'spot' ? spotError : perpError
+  const error = activeTab === 'spot' ? spotErrorData : perpErrorData
+
+  const filteredData = useMemo(() => {
+    if (!data) return []
+    if (!searchQuery) return data
+    return data.filter((row) =>
+      row.pair.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }, [data, searchQuery])
 
   useEffect(() => {
-    if (data && data.length) {
-      data.forEach((_, i) => {
+    if (filteredData && filteredData.length) {
+      filteredData.forEach((_, i) => {
         setTimeout(() => setRevealed((r) => Math.max(r, i + 1)), 300 + i * 200)
       })
     }
-  }, [data])
+  }, [filteredData])
 
   const mockChartData = new Array(20).fill(null).map((_, i) => ({
     value: Math.random() * 100
@@ -28,13 +45,25 @@ export const TokenTable: React.FC = () => {
       <div className="w-full">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
-            <button className="text-white bg-[#1a1d24] px-4 py-2 rounded font-medium">Spot</button>
-            <button className="text-gray-500 px-4 py-2 rounded font-medium">Perpetuals</button>
+            <button
+              className={`px-4 py-2 rounded font-medium ${activeTab === 'spot' ? 'text-white bg-[#1a1d24]' : 'text-gray-500 bg-transparent'}`}
+              onClick={() => setActiveTab('spot')}
+            >
+              Spot
+            </button>
+            <button
+              className={`px-4 py-2 rounded font-medium ${activeTab === 'perpetuals' ? 'text-white bg-[#1a1d24]' : 'text-gray-500 bg-transparent'}`}
+              onClick={() => setActiveTab('perpetuals')}
+            >
+              Perpetuals
+            </button>
           </div>
           <input
             type="text"
             placeholder="Search for other tokens..."
             className="bg-[#1a1d24] text-gray-400 px-4 py-2 rounded-lg w-64 focus:outline-none"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
@@ -82,7 +111,7 @@ export const TokenTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800">
-              {(isLoading ? new Array(5).fill(null) : data ?? []).map((row, idx) => {
+              {(isLoading ? new Array(5).fill(null) : filteredData ?? []).map((row, idx) => {
                 const isLoadingRow = isLoading || idx >= revealed
                 return (
                   <tr key={idx} className="hover:bg-[#2a2d34] transition-colors">
@@ -93,23 +122,23 @@ export const TokenTable: React.FC = () => {
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
                           <div>
-                            <div className="font-medium">USDC</div>
-                            <div className="text-sm text-gray-400">USD Coin</div>
+                            <div className="font-medium">{row.pair}</div>
+                            <div className="text-sm text-gray-400">{row.pair.split(' / ')[0] || row.pair.split('-')[0]}</div>
                           </div>
                         </div>
                       )}
                     </td>
                     <td className="py-4 px-6">
-                      {isLoadingRow ? <Skeleton width={80} height={24} /> : '$375.44'}
+                      {isLoadingRow ? <Skeleton width={80} height={24} /> : row.price}
                     </td>
                     <td className="py-4 px-6">
-                      {isLoadingRow ? <Skeleton width={80} height={24} /> : '$14,778'}
+                      {isLoadingRow ? <Skeleton width={80} height={24} /> : row.liquidity}
                     </td>
                     <td className="py-4 px-6">
                       {isLoadingRow ? (
                         <Skeleton width={80} height={24} />
                       ) : (
-                        <span className="text-green-500">+$2,338.80 (+43.92%)</span>
+                        <span className={row.change24.startsWith('+') ? 'text-green-500' : 'text-red-500'}>{row.change24}</span>
                       )}
                     </td>
                     <td className="py-4 px-6 text-center">
