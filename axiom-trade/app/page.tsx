@@ -90,9 +90,9 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20 animate-slide-up">
-        <h2 className="text-5xl font-bold text-right mb-4">Advanced Features to</h2>
-        <h2 className="text-5xl font-bold text-right mb-8">Videoline Your Trading.</h2>
-        <p className="text-xl text-gray-400 text-right mb-16">
+        <h2 className="text-5xl font-bold text-center mb-4">Advanced Features to</h2>
+        <h2 className="text-5xl font-bold text-center mb-8">Videoline Your Trading.</h2>
+        <p className="text-xl text-gray-400 text-center mb-16">
           From wallet tracking to real-time analytics, we've got you covered.
         </p>
 
