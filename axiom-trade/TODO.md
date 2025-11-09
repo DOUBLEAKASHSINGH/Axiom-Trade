@@ -1,0 +1,4 @@
+- [x] Add AnimatedBackground to layout.tsx behind all content (z-index 0)
+- [x] Add fade-in animation to NavBar
+- [x] Add slide-up animation to page content sections
+- [x] Test the app to ensure background moves behind grid (TokenTable)

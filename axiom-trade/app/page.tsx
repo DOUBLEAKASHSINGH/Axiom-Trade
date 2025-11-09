@@ -3,9 +3,9 @@ import TokenTable from '@/components/organisms/TokenTable'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#040507] text-white">
+    <div className="relative z-10 min-h-screen bg-[#040507] text-white">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section className="container mx-auto px-4 py-20 text-center animate-slide-up">
         <Image
           src="/axiom-logo.svg"
           alt="Axiom Logo"
@@ -29,7 +29,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 animate-slide-up">
         <h2 className="text-5xl font-bold text-right mb-4">Advanced Features to</h2>
         <h2 className="text-5xl font-bold text-right mb-8">Videoline Your Trading.</h2>
         <p className="text-xl text-gray-400 text-right mb-16">
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       {/* Trading Interface */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 animate-slide-up">
         <TokenTable />
       </section>
     </div>

@@ -6,7 +6,7 @@ import { Button } from '../atoms/Button'
 
 export const NavBar: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <nav className={cn("fixed top-0 w-full px-6 py-4 flex items-center justify-between bg-[#040507]/95 backdrop-blur supports-[backdrop-filter]:bg-[#040507]/60 z-50", className)}>
+    <nav className={cn("fixed top-0 w-full px-6 py-4 flex items-center justify-between bg-[#040507]/95 backdrop-blur supports-[backdrop-filter]:bg-[#040507]/60 z-50 animate-fade-in", className)}>
       <div className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/axiom-logo.svg" alt="Axiom Logo" width={32} height={32} />

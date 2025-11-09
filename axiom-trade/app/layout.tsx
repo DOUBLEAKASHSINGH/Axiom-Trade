@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/molecules/Header";
 import NavBar from "@/components/organisms/NavBar";
 import Providers from '@/components/Providers'
+import { AnimatedBackground } from '@/components/atoms/AnimatedBackground'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <head />
       <body className={`${inter.variable} min-h-screen bg-[#040507] font-sans antialiased`}>
+        <AnimatedBackground />
         <Providers>
           <NavBar />
           <main className="flex-1 pt-16">{children}</main>
